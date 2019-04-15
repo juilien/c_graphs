@@ -36,6 +36,7 @@ cVert* cg_cvert_set_content(cVert* vert, cPointer data) {
   return vert;
 }
 
+
 cVert* cg_cvert_add_edge(cVert* vert, cEdge* edge) {
   if (!vert) return NULL;
   if (!edge) return vert;
@@ -43,9 +44,11 @@ cVert* cg_cvert_add_edge(cVert* vert, cEdge* edge) {
   return vert;
 }
 
-cVert* cg_cvert_remove_edge(cVert* vert, cEdge* edge) {
-
+void cg_cvert_remove_edge(cVert* vert, cEdge* edge) {
+  int (*edge_equal)(cPointer, cPointer) = cg_cedge_compare;
+  cg_clist_destoy_current(cg_clist_find_first(vert->edges, edge_equal, edge));
 }
+
 
 void cg_cvert_destroy(cVert* vert) {
   if (vert) {

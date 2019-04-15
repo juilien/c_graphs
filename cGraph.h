@@ -5,8 +5,6 @@
 #include "cVert.h"
 #include "cList.h"
 
-#define CPOINTER_TO_CLIST(p) ((cPointer) (cList*) (p))
-
 
 /*!
 * \file cGraph.h

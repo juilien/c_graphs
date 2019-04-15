@@ -5,9 +5,12 @@
 #include <stdbool.h>
 #include <math.h>
 
-#define INT(u) ((int*) (void*) u)
-#define DOUBLE(u) ((double*) (void*) u)
-#define FLOAT(u) ((float*) (void*) u)
+typedef void* cPointer;
+
+#define INT(u) ((int*) (cPointer) u)
+#define DOUBLE(u) ((double*) (cPointer) u)
+#define FLOAT(u) ((float*) (cPointer) u)
+#define CEDGE(u) ((cEdge*) (cPointer) u)
 
 #define INT_MAX         2147483647
 #define SEEK_FORWARD    1
@@ -16,12 +19,10 @@
 #define OFFSET_CURRENT  0
 #define OFFSET_MAX      1
 
-typedef void* cPointer;
-
 typedef struct cList_s {
-    struct cList_s *    previous;
-    struct cList_s *    next;
-    cPointer            content;
+  struct cList_s *    previous;
+  struct cList_s *    next;
+  cPointer            content;
 } cList;
 
 cList*    cg_clist_new_empty(void) {
@@ -179,7 +180,25 @@ cList*    cg_clist_insert_clist(cList* list, int pos, cList* listToInsert) {
 }
 
 
-cList*    cg_clist_sort_asc(cList* list, int (*sortFunction)(cPointer, cPointer)) {
+
+cList*    cg_clist_copy(cList* list) {
+  if (!list) return NULL;
+  else return cg_clist_new(list->content);
+}
+
+cList*    cg_clist_copy_full(cList* list) {
+  if (!list) return NULL;
+  list = cg_clist_set_pos(list, 0);
+  cList* copyList;
+  while (list) {
+    copyList = cg_clist_append_clist(copyList, cg_clist_copy(list));
+    list = list->next;
+  }
+  return copyList;
+}
+
+
+cList*    cg_clist_sort_asc(cList* list, int (*compareFunction)(cPointer, cPointer)) {
   /* Loop variables */
   int i, j;
 
@@ -190,7 +209,7 @@ cList*    cg_clist_sort_asc(cList* list, int (*sortFunction)(cPointer, cPointer)
   for (i = list_length - 1; i > 0; i--) {
     list = cg_clist_seek(list, INT_MAX, SEEK_BACKWARD);
     for (j = 0; j < i; j++) {
-      if ((*sortFunction)(list->next->content, list->content) > 0) {
+      if ((*compareFunction)(list->next->content, list->content) > 0) {
         tmp = list->next->content;
         list->next->content = list->content;
         list->content = tmp;
@@ -201,7 +220,7 @@ cList*    cg_clist_sort_asc(cList* list, int (*sortFunction)(cPointer, cPointer)
   return list;
 }
 
-cList*    cg_clist_sort_desc(cList* list, int (*sortFunction)(cPointer, cPointer)) {
+cList*    cg_clist_sort_desc(cList* list, int (*compareFunction)(cPointer, cPointer)) {
   /* Loop variables */
   int i, j;
 
@@ -212,7 +231,7 @@ cList*    cg_clist_sort_desc(cList* list, int (*sortFunction)(cPointer, cPointer
   for (i = list_length - 1; i > 0; i--) {
     list = cg_clist_seek(list, INT_MAX, SEEK_BACKWARD);
     for (j = 0; j < i; j++) {
-      if ((*sortFunction)(list->next->content, list->content) < 0) {
+      if ((*compareFunction)(list->next->content, list->content) < 0) {
         tmp = list->next->content;
         list->next->content = list->content;
         list->content = tmp;
@@ -223,9 +242,44 @@ cList*    cg_clist_sort_desc(cList* list, int (*sortFunction)(cPointer, cPointer
   return list;
 }
 
-//TODO
-cList*    cg_clist_find(cList* list, int (*searchFunction)(cPointer, cPointer), cPointer data) {
+cList*    cg_clist_find_first(cList* list, int (*searchFunction)(cPointer, cPointer), cPointer data) {
+  if (!list) return NULL;
 
+  list = cg_clist_set_pos(list, 0);
+
+  while (list) {
+    if ((*searchFunction)(list->content, data) == 1) return list;
+    list =list->next;
+  }
+  return NULL;
+}
+
+cList*    cg_clist_find_last(cList* list, int (*searchFunction)(cPointer, cPointer), cPointer data) {
+  if (!list) return NULL;
+
+  list = cg_clist_set_pos(list, INT_MAX);
+
+  while (list) {
+    if ((*searchFunction)(list->content, data) == 1) return list;
+    list =list->previous;
+  }
+  return NULL;
+}
+
+cList*    cg_clist_find_all(cList* list, int (*searchFunction)(cPointer, cPointer), cPointer data) {
+  if (!list) return NULL;
+  cList* occurencesList = NULL;
+  cList* buffer = NULL;
+
+  list = cg_clist_set_pos(list, 0);
+
+  do {
+    buffer = cg_clist_find_first(list, (*searchFunction), data);
+
+    if (buffer) occurencesList = cg_clist_append_data(occurencesList, buffer);
+    list = list->next;
+  } while(buffer);
+  return occurencesList;
 }
 
 
@@ -244,4 +298,5 @@ void      cg_clist_destoy_current(cList* list) {
     free(list);
   }
 }
+
 #endif
