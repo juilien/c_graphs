@@ -44,6 +44,7 @@ cList*    cg_clist_seek(cList* list, unsigned int offset, char dir) {
 
   if (dir > 0)        currentNode = cg_clist_seek(list->next, offset - 1, SEEK_FORWARD);
   else if (dir < 0)   currentNode = cg_clist_seek(list->previous, offset - 1, SEEK_BACKWARD);
+  else offset = 0;
 
   if (currentNode == NULL || offset == 0) return list;
   else return currentNode;
@@ -51,16 +52,7 @@ cList*    cg_clist_seek(cList* list, unsigned int offset, char dir) {
 
 int       cg_clist_get_pos(cList* list) {
   if (!list) return -1;
-
-  int i = -1;
-  cList* tmp = NULL;
-
-  while (tmp != list) {
-    tmp = list;
-    list = cg_clist_seek(list, 1, SEEK_BACKWARD);
-    i++;
-  }
-  return i;
+  else return cg_clist_get_pos(list->previous) + 1;
 }
 
 cList*    cg_clist_set_pos(cList* list, int pos) {
@@ -74,16 +66,19 @@ int       cg_clist_get_size(cList* list) {
   int i = 1;
   list = cg_clist_seek(list, INT_MAX, SEEK_BACKWARD);
   while((list = list->next)) {
-    if (list->next == NULL) break;
+    if (list == NULL) break;
     i++;
   }
   return i;
 }
 
 
-void      cg_clist_set_content(cList* list, int pos, cPointer data) {
-  list = cg_clist_set_pos(list, pos);
+cList*    cg_clist_set_content(cList* list, int pos, cPointer data) {
+
+  if (list) list = cg_clist_set_pos(list, pos);
+  else list =  cg_clist_new_empty();
   list->content = data;
+  return list;
 }
 
 cPointer  cg_clist_get_content(cList* list, int pos) {
@@ -161,17 +156,17 @@ cList*    cg_clist_append_clist(cList* list, cList* listToAppend) {
   }
 }
 
-cList*    cg_clist_insert_data(cList* list, cPointer data, int pos) {
+cList*    cg_clist_insert_data(cList* list, int pos, cPointer data) {
   cList* newNode = cg_clist_new(data);
   list = cg_clist_set_pos(list, pos);
 
-  newNode->next = list->next;
-  newNode->previous = list;
+  newNode->previous = list->previous;
+  newNode->next = list;
 
   return newNode;
 }
 
-cList*    cg_clist_insert_clist(cList* list, cList* listToInsert, int pos) {
+cList*    cg_clist_insert_clist(cList* list, int pos, cList* listToInsert) {
   list = cg_clist_set_pos(list, pos);
   listToInsert = cg_clist_set_pos(list, 0);
 
@@ -193,8 +188,8 @@ cList*    cg_clist_sort_asc(cList* list, int (*sortFunction)(cPointer, cPointer)
 
   int list_length = cg_clist_get_size(list);
   for (i = list_length - 1; i > 0; i--) {
-    cg_clist_seek(list, INT_MAX, OFFSET_MIN);
-    for (j = 0; j < i-1; j++) {
+    list = cg_clist_seek(list, INT_MAX, SEEK_BACKWARD);
+    for (j = 0; j < i; j++) {
       if ((*sortFunction)(list->next->content, list->content) > 0) {
         tmp = list->next->content;
         list->next->content = list->content;
@@ -215,8 +210,8 @@ cList*    cg_clist_sort_desc(cList* list, int (*sortFunction)(cPointer, cPointer
 
   int list_length = cg_clist_get_size(list);
   for (i = list_length - 1; i > 0; i--) {
-    cg_clist_seek(list, INT_MAX, OFFSET_MIN);
-    for (j = 0; j < i-1; j++) {
+    list = cg_clist_seek(list, INT_MAX, SEEK_BACKWARD);
+    for (j = 0; j < i; j++) {
       if ((*sortFunction)(list->next->content, list->content) < 0) {
         tmp = list->next->content;
         list->next->content = list->content;
@@ -228,15 +223,25 @@ cList*    cg_clist_sort_desc(cList* list, int (*sortFunction)(cPointer, cPointer
   return list;
 }
 
+//TODO
+cList*    cg_clist_find(cList* list, int (*searchFunction)(cPointer, cPointer), cPointer data) {
+
+}
+
 
 void      cg_clist_destroy(cList* list) {
   if (list) {
-    if (list->previous != NULL) {
-      list->previous->next = NULL;
-    }
+    if (list->previous) list->previous->next = NULL;
     cg_clist_destroy(list->next);
     free(list);
   }
 }
 
+void      cg_clist_destoy_current(cList* list) {
+  if (list) {
+    if (list->previous) list->previous->next = NULL;
+    if (list->next) list->next->previous = NULL;
+    free(list);
+  }
+}
 #endif

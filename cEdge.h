@@ -3,11 +3,4 @@
 
 #include "cVert.h"
 
-typedef struct cEdge_s {
-  cVert*  vertA;
-  cVert*  vertB;
-  cPointer  value;
-  int       orientation;
-} cEdge;
-
 #endif
