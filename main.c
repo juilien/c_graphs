@@ -29,6 +29,5 @@ int main(int argc, char** argv) {
   printf("pos %d : %p : %d\n", cg_clist_get_pos(newList), newList, *(INT(newList->content)));
   newList = cg_clist_set_pos(newList, 3);
   printf("pos %d : %p : %d\n", cg_clist_get_pos(newList), newList, *(INT(newList->content)));
-  
   return 0;
 }
