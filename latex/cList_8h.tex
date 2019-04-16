@@ -1,0 +1,576 @@
+\hypertarget{cList_8h}{}\section{c\+List.\+h File Reference}
+\label{cList_8h}\index{cList.h@{cList.h}}
+
+
+Contains basic functions to manage double-\/chained lists.  
+
+
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structcList__s}{c\+List\+\_\+s}}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{cList_8h_a4c3f5d1c898b77ccf18b6a0c8e787e41}\label{cList_8h_a4c3f5d1c898b77ccf18b6a0c8e787e41}} 
+\#define {\bfseries I\+NT}(u)~((int$\ast$) (c\+Pointer) u)
+\item 
+\mbox{\Hypertarget{cList_8h_a9b66112d768dd05a8f7d30e72260e8f3}\label{cList_8h_a9b66112d768dd05a8f7d30e72260e8f3}} 
+\#define {\bfseries D\+O\+U\+B\+LE}(u)~((double$\ast$) (c\+Pointer) u)
+\item 
+\mbox{\Hypertarget{cList_8h_aaf50562965cf75eba94647bab53a4ee6}\label{cList_8h_aaf50562965cf75eba94647bab53a4ee6}} 
+\#define {\bfseries F\+L\+O\+AT}(u)~((float$\ast$) (c\+Pointer) u)
+\item 
+\mbox{\Hypertarget{cList_8h_ad2c6d37cbc6c862bed0673bb97fc81c2}\label{cList_8h_ad2c6d37cbc6c862bed0673bb97fc81c2}} 
+\#define {\bfseries C\+E\+D\+GE}(u)~((\mbox{\hyperlink{structcEdge__s}{c\+Edge}}$\ast$) (c\+Pointer) u)
+\item 
+\mbox{\Hypertarget{cList_8h_a9ec306f36d50c7375e74f0d1c55a3a67}\label{cList_8h_a9ec306f36d50c7375e74f0d1c55a3a67}} 
+\#define {\bfseries I\+N\+T\+\_\+\+M\+AX}~2147483647
+\item 
+\mbox{\Hypertarget{cList_8h_ac2137cfd3603f03846915428e5e55501}\label{cList_8h_ac2137cfd3603f03846915428e5e55501}} 
+\#define {\bfseries S\+E\+E\+K\+\_\+\+F\+O\+R\+W\+A\+RD}~1
+\item 
+\mbox{\Hypertarget{cList_8h_a8bdd64848e689e7868a975e365db15eb}\label{cList_8h_a8bdd64848e689e7868a975e365db15eb}} 
+\#define {\bfseries S\+E\+E\+K\+\_\+\+B\+A\+C\+K\+W\+A\+RD}~-\/1
+\item 
+\mbox{\Hypertarget{cList_8h_a8979c026ebd9183f6fef912f41c0cd5b}\label{cList_8h_a8979c026ebd9183f6fef912f41c0cd5b}} 
+\#define {\bfseries O\+F\+F\+S\+E\+T\+\_\+\+M\+AX}~1
+\item 
+\mbox{\Hypertarget{cList_8h_a71aee433e63a0b16b880dadb6f2e527e}\label{cList_8h_a71aee433e63a0b16b880dadb6f2e527e}} 
+\#define {\bfseries O\+F\+F\+S\+E\+T\+\_\+\+C\+U\+R\+R\+E\+NT}~0
+\item 
+\mbox{\Hypertarget{cList_8h_ace897cf39ba01d60774c2d838a23dac8}\label{cList_8h_ace897cf39ba01d60774c2d838a23dac8}} 
+\#define {\bfseries O\+F\+F\+S\+E\+T\+\_\+\+M\+IN}~-\/1
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{cList_8h_a1d39e1a362e450940b68cf3c99ea269c}\label{cList_8h_a1d39e1a362e450940b68cf3c99ea269c}} 
+typedef void $\ast$ {\bfseries c\+Pointer}
+\item 
+\mbox{\Hypertarget{cList_8h_a8d977d60616991cc2347d82d32328d24}\label{cList_8h_a8d977d60616991cc2347d82d32328d24}} 
+typedef struct \mbox{\hyperlink{structcList__s}{c\+List\+\_\+s}} {\bfseries c\+List}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structcList}{c\+List}} $\ast$ \mbox{\hyperlink{cList_8h_af07ea265a7b17e6f4b593fb90dbc1f8b}{cg\+\_\+clist\+\_\+new\+\_\+empty}} (void)
+\begin{DoxyCompactList}\small\item\em Create an empty list node. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structcList}{c\+List}} $\ast$ \mbox{\hyperlink{cList_8h_adf87c0ebaf960e29c4d090f309d0a79e}{cg\+\_\+clist\+\_\+new}} (c\+Pointer data)
+\begin{DoxyCompactList}\small\item\em Creates a list node filled with the input data. If data is empty, will return the same as cg\+\_\+clist\+\_\+new\+\_\+empty. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structcList}{c\+List}} $\ast$ \mbox{\hyperlink{cList_8h_a522820bd597ad6df30beeefbce9cdaff}{cg\+\_\+clist\+\_\+seek}} (\mbox{\hyperlink{structcList}{c\+List}} $\ast$list, unsigned int offset, char dir)
+\begin{DoxyCompactList}\small\item\em Seeks of (offset) nodes in (list). The direction depends of the (dir) parameter \+: \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{cList_8h_a921a16654688345c43ad8c3f6c2b13f2}{cg\+\_\+clist\+\_\+get\+\_\+pos}} (\mbox{\hyperlink{structcList}{c\+List}} $\ast$list)
+\begin{DoxyCompactList}\small\item\em Returns the position of the input node in its list. If (list) is N\+U\+LL, wille return -\/1. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structcList}{c\+List}} $\ast$ \mbox{\hyperlink{cList_8h_a6e37fbc61806a5b6bd45dc71eec4af2b}{cg\+\_\+clist\+\_\+set\+\_\+pos}} (\mbox{\hyperlink{structcList}{c\+List}} $\ast$list, int pos)
+\begin{DoxyCompactList}\small\item\em Returns a pointer on the list node located at (pos) int the list. If (pos) is higher/lower than possible positions, will return the last/first node of the list. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{cList_8h_a17ccbdb324d233f463c7291da83d6a8a}{cg\+\_\+clist\+\_\+get\+\_\+size}} (\mbox{\hyperlink{structcList}{c\+List}} $\ast$list)
+\begin{DoxyCompactList}\small\item\em Returns the total length of a list, not depending of the begin position in this list. If (list) is N\+U\+LL, returns -\/1. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structcList}{c\+List}} $\ast$ \mbox{\hyperlink{cList_8h_aa36983b300155bfd0d23749953168aa0}{cg\+\_\+clist\+\_\+prepend\+\_\+data}} (\mbox{\hyperlink{structcList}{c\+List}} $\ast$list, c\+Pointer data)
+\begin{DoxyCompactList}\small\item\em Create a new node at the beginning of the list filled with data. Creates a new list if (list) is N\+U\+LL. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structcList}{c\+List}} $\ast$ \mbox{\hyperlink{cList_8h_a9bca5168da88131065804230a924e194}{cg\+\_\+clist\+\_\+append\+\_\+data}} (\mbox{\hyperlink{structcList}{c\+List}} $\ast$list, c\+Pointer data)
+\begin{DoxyCompactList}\small\item\em Create a new node at the end of the list filled with data. Creates a new list if (list) is N\+U\+LL. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structcList}{c\+List}} $\ast$ \mbox{\hyperlink{cList_8h_a0e4db7d60fa7a1be4c5b432873fe47a9}{cg\+\_\+clist\+\_\+prepend\+\_\+clist}} (\mbox{\hyperlink{structcList}{c\+List}} $\ast$list, \mbox{\hyperlink{structcList}{c\+List}} $\ast$list\+To\+Prepend)
+\begin{DoxyCompactList}\small\item\em Merges (list\+To\+Prepend) at the beginning of (list). Returns the beginning of the new list. If one of those is empty, will return the other. Returns N\+U\+LL if both are empty. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structcList}{c\+List}} $\ast$ \mbox{\hyperlink{cList_8h_ad904ed3444085b53fb9d6f1c7d9a1d9d}{cg\+\_\+clist\+\_\+append\+\_\+clist}} (\mbox{\hyperlink{structcList}{c\+List}} $\ast$list, \mbox{\hyperlink{structcList}{c\+List}} $\ast$list\+To\+Append)
+\begin{DoxyCompactList}\small\item\em Merges (list\+To\+Prepend) at the end of (list). Returns the beginning of the new list. If one of those is empty, will return the other. Returns N\+U\+LL if both are empty. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structcList}{c\+List}} $\ast$ \mbox{\hyperlink{cList_8h_a3d5d146c9fd4e4091104eaa56ce655a2}{cg\+\_\+clist\+\_\+set\+\_\+content}} (\mbox{\hyperlink{structcList}{c\+List}} $\ast$list, int pos, c\+Pointer data)
+\begin{DoxyCompactList}\small\item\em Modify the content of the node located at (pos). Return a pointer on it. If (pos) is higher/lower than the possible offset, will act the same as cg\+\_\+clist\+\_\+append\+\_\+data/cg\+\_\+clist\+\_\+prepend\+\_\+data. \end{DoxyCompactList}\item 
+c\+Pointer \mbox{\hyperlink{cList_8h_a0909072fb53d0ef9d725fa14bf67949f}{cg\+\_\+clist\+\_\+get\+\_\+content}} (\mbox{\hyperlink{structcList}{c\+List}} $\ast$list, int pos)
+\begin{DoxyCompactList}\small\item\em Return a pointer on the content of the list node located at position (pos). If (pos) is higher/lower than the possible offset, will return the content of the last/first node. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structcList}{c\+List}} $\ast$ \mbox{\hyperlink{cList_8h_a77706f2070976702169b93897e817206}{cg\+\_\+clist\+\_\+insert\+\_\+data}} (\mbox{\hyperlink{structcList}{c\+List}} $\ast$list, int pos, c\+Pointer data)
+\begin{DoxyCompactList}\small\item\em Inserts a new node at (pos) filled with (data) and returns a pointer on it. If (pos) is higher/lower than possible positions, will act the same as cg\+\_\+clist\+\_\+append\+\_\+data/cg\+\_\+clist\+\_\+prepend\+\_\+data. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structcList}{c\+List}} $\ast$ \mbox{\hyperlink{cList_8h_a49db8d4650bbfaa1bed85df2c8652602}{cg\+\_\+clist\+\_\+insert\+\_\+clist}} (\mbox{\hyperlink{structcList}{c\+List}} $\ast$list, int pos, \mbox{\hyperlink{structcList}{c\+List}} $\ast$list\+To\+Insert)
+\begin{DoxyCompactList}\small\item\em Inserts (list\+To\+Insert) between (pos -\/ 1) and (pos) in (list) and returns a pointer on it. If (pos) is higher/lower than possible positions, will act the same as cg\+\_\+clist\+\_\+append\+\_\+clist/cg\+\_\+clist\+\_\+prepend\+\_\+clist.\+s. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structcList}{c\+List}} $\ast$ \mbox{\hyperlink{cList_8h_a5e7287c568f06a258fd2c5beb942fbea}{cg\+\_\+clist\+\_\+copy}} (\mbox{\hyperlink{structcList}{c\+List}} $\ast$list)
+\begin{DoxyCompactList}\small\item\em Create a new list node which points on the same content as (list). Return N\+U\+LL if (list) is N\+U\+LL. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structcList}{c\+List}} $\ast$ \mbox{\hyperlink{cList_8h_aa47e616d2af7b42476f5ce3b601de2fd}{cg\+\_\+clist\+\_\+copy\+\_\+full}} (\mbox{\hyperlink{structcList}{c\+List}} $\ast$list)
+\begin{DoxyCompactList}\small\item\em Creates a full copy of (list) which has the same content and returns its first node. Return N\+U\+LL if (list) is N\+U\+LL. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structcList}{c\+List}} $\ast$ \mbox{\hyperlink{cList_8h_a69205c7063d4d47170e37daf1801db0f}{cg\+\_\+clist\+\_\+sort\+\_\+asc}} (\mbox{\hyperlink{structcList}{c\+List}} $\ast$list, int($\ast$compare\+Function)(c\+Pointer, c\+Pointer))
+\begin{DoxyCompactList}\small\item\em Takes a list as entry. Sort the list depending its content. The parameter to use must be given by ($\ast$compare\+Function), which must return an integer \+: \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structcList}{c\+List}} $\ast$ \mbox{\hyperlink{cList_8h_acaa3259b8fc5461730ad38045255e07a}{cg\+\_\+clist\+\_\+sort\+\_\+desc}} (\mbox{\hyperlink{structcList}{c\+List}} $\ast$list, int($\ast$compare\+Function)(c\+Pointer, c\+Pointer))
+\begin{DoxyCompactList}\small\item\em Takes a list as entry. Sort the list depending its content. The parameter to use must be given by ($\ast$compare\+Function), which must return an integer \+: \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structcList}{c\+List}} $\ast$ \mbox{\hyperlink{cList_8h_ab72613f7f8b1e0da2254eb341ce32d66}{cg\+\_\+clist\+\_\+find\+\_\+first}} (\mbox{\hyperlink{structcList}{c\+List}} $\ast$list, int($\ast$search\+Function)(c\+Pointer, c\+Pointer), c\+Pointer data)
+\begin{DoxyCompactList}\small\item\em Returns the list node that contains the first occurence of (data) in the list. The ($\ast$search\+Function) must return 0 if the node\textquotesingle{}s content matches to (data). Returns N\+U\+LL if (list) is N\+U\+LL, or if no matches were found. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structcList}{c\+List}} $\ast$ \mbox{\hyperlink{cList_8h_a19277e589498c058a1abf996678ea186}{cg\+\_\+clist\+\_\+find\+\_\+last}} (\mbox{\hyperlink{structcList}{c\+List}} $\ast$list, int($\ast$search\+Function)(c\+Pointer, c\+Pointer), c\+Pointer data)
+\begin{DoxyCompactList}\small\item\em Returns the list node that contains the first occurence of (data) in the list. The ($\ast$search\+Function) must return 0 if the node\textquotesingle{}s content matches to (data). Returns N\+U\+LL if (list) is N\+U\+LL, or if no matches were found. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structcList}{c\+List}} $\ast$ \mbox{\hyperlink{cList_8h_a86b827772a92bdbd4e123e4a8650db1c}{cg\+\_\+clist\+\_\+find\+\_\+all}} (\mbox{\hyperlink{structcList}{c\+List}} $\ast$list, int($\ast$search\+Function)(c\+Pointer, c\+Pointer), c\+Pointer data)
+\begin{DoxyCompactList}\small\item\em Returns the list node that contains all the nodes which match with (data) in the list. The ($\ast$search\+Function) must return 0 if the node\textquotesingle{}s content matches to (data). Returns N\+U\+LL if (list) is N\+U\+LL, or if no matches were found. W\+A\+R\+N\+I\+NG \+: The new list\textquotesingle{}s content field is filled with list nodes, not with their datas. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{cList_8h_ad8a07724344422622918f355fc71c835}{cg\+\_\+clist\+\_\+destroy}} (\mbox{\hyperlink{structcList}{c\+List}} $\ast$list)
+\begin{DoxyCompactList}\small\item\em Will destroy the whole list, not depending of the position on (list) in the list. W\+A\+R\+N\+I\+NG \+: cg\+\_\+clist\+\_\+destoy doesn\textquotesingle{}t destroy the content of the list. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{cList_8h_af0acc40f07ab29dcad2f16435e8f8865}{cg\+\_\+clist\+\_\+destroy\+\_\+current}} (\mbox{\hyperlink{structcList}{c\+List}} $\ast$list)
+\begin{DoxyCompactList}\small\item\em Will destroy the list node and preserves links. W\+A\+R\+N\+I\+NG \+: cg\+\_\+clist\+\_\+destoy doesn\textquotesingle{}t destroy the content of the list node. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Contains basic functions to manage double-\/chained lists. 
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{cList_8h_ad904ed3444085b53fb9d6f1c7d9a1d9d}\label{cList_8h_ad904ed3444085b53fb9d6f1c7d9a1d9d}} 
+\index{cList.h@{cList.h}!cg\_clist\_append\_clist@{cg\_clist\_append\_clist}}
+\index{cg\_clist\_append\_clist@{cg\_clist\_append\_clist}!cList.h@{cList.h}}
+\subsubsection{\texorpdfstring{cg\_clist\_append\_clist()}{cg\_clist\_append\_clist()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structcList}{c\+List}} $\ast$ cg\+\_\+clist\+\_\+append\+\_\+clist (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcList}{c\+List}} $\ast$}]{list,  }\item[{\mbox{\hyperlink{structcList}{c\+List}} $\ast$}]{list\+To\+Append }\end{DoxyParamCaption})}
+
+
+
+Merges (list\+To\+Prepend) at the end of (list). Returns the beginning of the new list. If one of those is empty, will return the other. Returns N\+U\+LL if both are empty. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em list} & A list. \\
+\hline
+\mbox{\texttt{ in}}  & {\em list\+To\+Prepend} & A list. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list node. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{cList_8h_a9bca5168da88131065804230a924e194}\label{cList_8h_a9bca5168da88131065804230a924e194}} 
+\index{cList.h@{cList.h}!cg\_clist\_append\_data@{cg\_clist\_append\_data}}
+\index{cg\_clist\_append\_data@{cg\_clist\_append\_data}!cList.h@{cList.h}}
+\subsubsection{\texorpdfstring{cg\_clist\_append\_data()}{cg\_clist\_append\_data()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structcList}{c\+List}} $\ast$ cg\+\_\+clist\+\_\+append\+\_\+data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcList}{c\+List}} $\ast$}]{list,  }\item[{c\+Pointer}]{data }\end{DoxyParamCaption})}
+
+
+
+Create a new node at the end of the list filled with data. Creates a new list if (list) is N\+U\+LL. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em list} & A list \\
+\hline
+\mbox{\texttt{ in}}  & {\em data} & A default pointer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list node. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{cList_8h_a5e7287c568f06a258fd2c5beb942fbea}\label{cList_8h_a5e7287c568f06a258fd2c5beb942fbea}} 
+\index{cList.h@{cList.h}!cg\_clist\_copy@{cg\_clist\_copy}}
+\index{cg\_clist\_copy@{cg\_clist\_copy}!cList.h@{cList.h}}
+\subsubsection{\texorpdfstring{cg\_clist\_copy()}{cg\_clist\_copy()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structcList}{c\+List}} $\ast$ cg\+\_\+clist\+\_\+copy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcList}{c\+List}} $\ast$}]{list }\end{DoxyParamCaption})}
+
+
+
+Create a new list node which points on the same content as (list). Return N\+U\+LL if (list) is N\+U\+LL. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em list} & A list. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list node. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{cList_8h_aa47e616d2af7b42476f5ce3b601de2fd}\label{cList_8h_aa47e616d2af7b42476f5ce3b601de2fd}} 
+\index{cList.h@{cList.h}!cg\_clist\_copy\_full@{cg\_clist\_copy\_full}}
+\index{cg\_clist\_copy\_full@{cg\_clist\_copy\_full}!cList.h@{cList.h}}
+\subsubsection{\texorpdfstring{cg\_clist\_copy\_full()}{cg\_clist\_copy\_full()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structcList}{c\+List}} $\ast$ cg\+\_\+clist\+\_\+copy\+\_\+full (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcList}{c\+List}} $\ast$}]{list }\end{DoxyParamCaption})}
+
+
+
+Creates a full copy of (list) which has the same content and returns its first node. Return N\+U\+LL if (list) is N\+U\+LL. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em list} & A list node. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list node. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{cList_8h_ad8a07724344422622918f355fc71c835}\label{cList_8h_ad8a07724344422622918f355fc71c835}} 
+\index{cList.h@{cList.h}!cg\_clist\_destroy@{cg\_clist\_destroy}}
+\index{cg\_clist\_destroy@{cg\_clist\_destroy}!cList.h@{cList.h}}
+\subsubsection{\texorpdfstring{cg\_clist\_destroy()}{cg\_clist\_destroy()}}
+{\footnotesize\ttfamily void cg\+\_\+clist\+\_\+destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcList}{c\+List}} $\ast$}]{list }\end{DoxyParamCaption})}
+
+
+
+Will destroy the whole list, not depending of the position on (list) in the list. W\+A\+R\+N\+I\+NG \+: cg\+\_\+clist\+\_\+destoy doesn\textquotesingle{}t destroy the content of the list. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em list} & A list node. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{cList_8h_af0acc40f07ab29dcad2f16435e8f8865}\label{cList_8h_af0acc40f07ab29dcad2f16435e8f8865}} 
+\index{cList.h@{cList.h}!cg\_clist\_destroy\_current@{cg\_clist\_destroy\_current}}
+\index{cg\_clist\_destroy\_current@{cg\_clist\_destroy\_current}!cList.h@{cList.h}}
+\subsubsection{\texorpdfstring{cg\_clist\_destroy\_current()}{cg\_clist\_destroy\_current()}}
+{\footnotesize\ttfamily void cg\+\_\+clist\+\_\+destroy\+\_\+current (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcList}{c\+List}} $\ast$}]{list }\end{DoxyParamCaption})}
+
+
+
+Will destroy the list node and preserves links. W\+A\+R\+N\+I\+NG \+: cg\+\_\+clist\+\_\+destoy doesn\textquotesingle{}t destroy the content of the list node. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em list} & A list node. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{cList_8h_a86b827772a92bdbd4e123e4a8650db1c}\label{cList_8h_a86b827772a92bdbd4e123e4a8650db1c}} 
+\index{cList.h@{cList.h}!cg\_clist\_find\_all@{cg\_clist\_find\_all}}
+\index{cg\_clist\_find\_all@{cg\_clist\_find\_all}!cList.h@{cList.h}}
+\subsubsection{\texorpdfstring{cg\_clist\_find\_all()}{cg\_clist\_find\_all()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structcList}{c\+List}} $\ast$ cg\+\_\+clist\+\_\+find\+\_\+all (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcList}{c\+List}} $\ast$}]{list,  }\item[{int($\ast$)(c\+Pointer, c\+Pointer)}]{search\+Function,  }\item[{c\+Pointer}]{data }\end{DoxyParamCaption})}
+
+
+
+Returns the list node that contains all the nodes which match with (data) in the list. The ($\ast$search\+Function) must return 0 if the node\textquotesingle{}s content matches to (data). Returns N\+U\+LL if (list) is N\+U\+LL, or if no matches were found. W\+A\+R\+N\+I\+NG \+: The new list\textquotesingle{}s content field is filled with list nodes, not with their datas. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em list} & A list. \\
+\hline
+\mbox{\texttt{ in}}  & {\em ($\ast$search\+Function)} & A research function (More details following). \\
+\hline
+\mbox{\texttt{ in}}  & {\em data} & A default pointer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list node. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{cList_8h_ab72613f7f8b1e0da2254eb341ce32d66}\label{cList_8h_ab72613f7f8b1e0da2254eb341ce32d66}} 
+\index{cList.h@{cList.h}!cg\_clist\_find\_first@{cg\_clist\_find\_first}}
+\index{cg\_clist\_find\_first@{cg\_clist\_find\_first}!cList.h@{cList.h}}
+\subsubsection{\texorpdfstring{cg\_clist\_find\_first()}{cg\_clist\_find\_first()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structcList}{c\+List}} $\ast$ cg\+\_\+clist\+\_\+find\+\_\+first (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcList}{c\+List}} $\ast$}]{list,  }\item[{int($\ast$)(c\+Pointer, c\+Pointer)}]{search\+Function,  }\item[{c\+Pointer}]{data }\end{DoxyParamCaption})}
+
+
+
+Returns the list node that contains the first occurence of (data) in the list. The ($\ast$search\+Function) must return 0 if the node\textquotesingle{}s content matches to (data). Returns N\+U\+LL if (list) is N\+U\+LL, or if no matches were found. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em list} & A list. \\
+\hline
+\mbox{\texttt{ in}}  & {\em ($\ast$search\+Function)} & A research function (More details following). \\
+\hline
+\mbox{\texttt{ in}}  & {\em data} & A default pointer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list node. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{cList_8h_a19277e589498c058a1abf996678ea186}\label{cList_8h_a19277e589498c058a1abf996678ea186}} 
+\index{cList.h@{cList.h}!cg\_clist\_find\_last@{cg\_clist\_find\_last}}
+\index{cg\_clist\_find\_last@{cg\_clist\_find\_last}!cList.h@{cList.h}}
+\subsubsection{\texorpdfstring{cg\_clist\_find\_last()}{cg\_clist\_find\_last()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structcList}{c\+List}} $\ast$ cg\+\_\+clist\+\_\+find\+\_\+last (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcList}{c\+List}} $\ast$}]{list,  }\item[{int($\ast$)(c\+Pointer, c\+Pointer)}]{search\+Function,  }\item[{c\+Pointer}]{data }\end{DoxyParamCaption})}
+
+
+
+Returns the list node that contains the first occurence of (data) in the list. The ($\ast$search\+Function) must return 0 if the node\textquotesingle{}s content matches to (data). Returns N\+U\+LL if (list) is N\+U\+LL, or if no matches were found. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em list} & A list. \\
+\hline
+\mbox{\texttt{ in}}  & {\em ($\ast$search\+Function)} & A research function (More details following). \\
+\hline
+\mbox{\texttt{ in}}  & {\em data} & A default pointer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list node. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{cList_8h_a0909072fb53d0ef9d725fa14bf67949f}\label{cList_8h_a0909072fb53d0ef9d725fa14bf67949f}} 
+\index{cList.h@{cList.h}!cg\_clist\_get\_content@{cg\_clist\_get\_content}}
+\index{cg\_clist\_get\_content@{cg\_clist\_get\_content}!cList.h@{cList.h}}
+\subsubsection{\texorpdfstring{cg\_clist\_get\_content()}{cg\_clist\_get\_content()}}
+{\footnotesize\ttfamily c\+Pointer cg\+\_\+clist\+\_\+get\+\_\+content (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcList}{c\+List}} $\ast$}]{list,  }\item[{int}]{pos }\end{DoxyParamCaption})}
+
+
+
+Return a pointer on the content of the list node located at position (pos). If (pos) is higher/lower than the possible offset, will return the content of the last/first node. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em list} & A list. \\
+\hline
+\mbox{\texttt{ in}}  & {\em pos} & An integer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A default pointer. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{cList_8h_a921a16654688345c43ad8c3f6c2b13f2}\label{cList_8h_a921a16654688345c43ad8c3f6c2b13f2}} 
+\index{cList.h@{cList.h}!cg\_clist\_get\_pos@{cg\_clist\_get\_pos}}
+\index{cg\_clist\_get\_pos@{cg\_clist\_get\_pos}!cList.h@{cList.h}}
+\subsubsection{\texorpdfstring{cg\_clist\_get\_pos()}{cg\_clist\_get\_pos()}}
+{\footnotesize\ttfamily int cg\+\_\+clist\+\_\+get\+\_\+pos (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcList}{c\+List}} $\ast$}]{list }\end{DoxyParamCaption})}
+
+
+
+Returns the position of the input node in its list. If (list) is N\+U\+LL, wille return -\/1. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em list} & The node in the list to get the position from \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int An integer. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{cList_8h_a17ccbdb324d233f463c7291da83d6a8a}\label{cList_8h_a17ccbdb324d233f463c7291da83d6a8a}} 
+\index{cList.h@{cList.h}!cg\_clist\_get\_size@{cg\_clist\_get\_size}}
+\index{cg\_clist\_get\_size@{cg\_clist\_get\_size}!cList.h@{cList.h}}
+\subsubsection{\texorpdfstring{cg\_clist\_get\_size()}{cg\_clist\_get\_size()}}
+{\footnotesize\ttfamily int cg\+\_\+clist\+\_\+get\+\_\+size (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcList}{c\+List}} $\ast$}]{list }\end{DoxyParamCaption})}
+
+
+
+Returns the total length of a list, not depending of the begin position in this list. If (list) is N\+U\+LL, returns -\/1. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em list} & A list. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An integer. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{cList_8h_a49db8d4650bbfaa1bed85df2c8652602}\label{cList_8h_a49db8d4650bbfaa1bed85df2c8652602}} 
+\index{cList.h@{cList.h}!cg\_clist\_insert\_clist@{cg\_clist\_insert\_clist}}
+\index{cg\_clist\_insert\_clist@{cg\_clist\_insert\_clist}!cList.h@{cList.h}}
+\subsubsection{\texorpdfstring{cg\_clist\_insert\_clist()}{cg\_clist\_insert\_clist()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structcList}{c\+List}} $\ast$ cg\+\_\+clist\+\_\+insert\+\_\+clist (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcList}{c\+List}} $\ast$}]{list,  }\item[{int}]{pos,  }\item[{\mbox{\hyperlink{structcList}{c\+List}} $\ast$}]{list\+To\+Insert }\end{DoxyParamCaption})}
+
+
+
+Inserts (list\+To\+Insert) between (pos -\/ 1) and (pos) in (list) and returns a pointer on it. If (pos) is higher/lower than possible positions, will act the same as cg\+\_\+clist\+\_\+append\+\_\+clist/cg\+\_\+clist\+\_\+prepend\+\_\+clist.\+s. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em list} & A list. \\
+\hline
+\mbox{\texttt{ in}}  & {\em pos} & An integer. \\
+\hline
+\mbox{\texttt{ in}}  & {\em list\+To\+Insert} & A list. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list node. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{cList_8h_a77706f2070976702169b93897e817206}\label{cList_8h_a77706f2070976702169b93897e817206}} 
+\index{cList.h@{cList.h}!cg\_clist\_insert\_data@{cg\_clist\_insert\_data}}
+\index{cg\_clist\_insert\_data@{cg\_clist\_insert\_data}!cList.h@{cList.h}}
+\subsubsection{\texorpdfstring{cg\_clist\_insert\_data()}{cg\_clist\_insert\_data()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structcList}{c\+List}} $\ast$ cg\+\_\+clist\+\_\+insert\+\_\+data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcList}{c\+List}} $\ast$}]{list,  }\item[{int}]{pos,  }\item[{c\+Pointer}]{data }\end{DoxyParamCaption})}
+
+
+
+Inserts a new node at (pos) filled with (data) and returns a pointer on it. If (pos) is higher/lower than possible positions, will act the same as cg\+\_\+clist\+\_\+append\+\_\+data/cg\+\_\+clist\+\_\+prepend\+\_\+data. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em list} & A list. \\
+\hline
+\mbox{\texttt{ in}}  & {\em pos} & An integer. \\
+\hline
+\mbox{\texttt{ in}}  & {\em data} & A default pointer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list node. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{cList_8h_adf87c0ebaf960e29c4d090f309d0a79e}\label{cList_8h_adf87c0ebaf960e29c4d090f309d0a79e}} 
+\index{cList.h@{cList.h}!cg\_clist\_new@{cg\_clist\_new}}
+\index{cg\_clist\_new@{cg\_clist\_new}!cList.h@{cList.h}}
+\subsubsection{\texorpdfstring{cg\_clist\_new()}{cg\_clist\_new()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structcList}{c\+List}} $\ast$ cg\+\_\+clist\+\_\+new (\begin{DoxyParamCaption}\item[{c\+Pointer}]{data }\end{DoxyParamCaption})}
+
+
+
+Creates a list node filled with the input data. If data is empty, will return the same as cg\+\_\+clist\+\_\+new\+\_\+empty. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em data} & A default pointer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list node. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{cList_8h_af07ea265a7b17e6f4b593fb90dbc1f8b}\label{cList_8h_af07ea265a7b17e6f4b593fb90dbc1f8b}} 
+\index{cList.h@{cList.h}!cg\_clist\_new\_empty@{cg\_clist\_new\_empty}}
+\index{cg\_clist\_new\_empty@{cg\_clist\_new\_empty}!cList.h@{cList.h}}
+\subsubsection{\texorpdfstring{cg\_clist\_new\_empty()}{cg\_clist\_new\_empty()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structcList}{c\+List}} $\ast$ cg\+\_\+clist\+\_\+new\+\_\+empty (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Create an empty list node. 
+
+\begin{DoxyReturn}{Returns}
+Returns an empty list node. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{cList_8h_a0e4db7d60fa7a1be4c5b432873fe47a9}\label{cList_8h_a0e4db7d60fa7a1be4c5b432873fe47a9}} 
+\index{cList.h@{cList.h}!cg\_clist\_prepend\_clist@{cg\_clist\_prepend\_clist}}
+\index{cg\_clist\_prepend\_clist@{cg\_clist\_prepend\_clist}!cList.h@{cList.h}}
+\subsubsection{\texorpdfstring{cg\_clist\_prepend\_clist()}{cg\_clist\_prepend\_clist()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structcList}{c\+List}} $\ast$ cg\+\_\+clist\+\_\+prepend\+\_\+clist (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcList}{c\+List}} $\ast$}]{list,  }\item[{\mbox{\hyperlink{structcList}{c\+List}} $\ast$}]{list\+To\+Prepend }\end{DoxyParamCaption})}
+
+
+
+Merges (list\+To\+Prepend) at the beginning of (list). Returns the beginning of the new list. If one of those is empty, will return the other. Returns N\+U\+LL if both are empty. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em list} & A list. \\
+\hline
+\mbox{\texttt{ in}}  & {\em list\+To\+Prepend} & A list. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list node. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{cList_8h_aa36983b300155bfd0d23749953168aa0}\label{cList_8h_aa36983b300155bfd0d23749953168aa0}} 
+\index{cList.h@{cList.h}!cg\_clist\_prepend\_data@{cg\_clist\_prepend\_data}}
+\index{cg\_clist\_prepend\_data@{cg\_clist\_prepend\_data}!cList.h@{cList.h}}
+\subsubsection{\texorpdfstring{cg\_clist\_prepend\_data()}{cg\_clist\_prepend\_data()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structcList}{c\+List}} $\ast$ cg\+\_\+clist\+\_\+prepend\+\_\+data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcList}{c\+List}} $\ast$}]{list,  }\item[{c\+Pointer}]{data }\end{DoxyParamCaption})}
+
+
+
+Create a new node at the beginning of the list filled with data. Creates a new list if (list) is N\+U\+LL. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em list} & A list \\
+\hline
+\mbox{\texttt{ in}}  & {\em data} & A default pointer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list node. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{cList_8h_a522820bd597ad6df30beeefbce9cdaff}\label{cList_8h_a522820bd597ad6df30beeefbce9cdaff}} 
+\index{cList.h@{cList.h}!cg\_clist\_seek@{cg\_clist\_seek}}
+\index{cg\_clist\_seek@{cg\_clist\_seek}!cList.h@{cList.h}}
+\subsubsection{\texorpdfstring{cg\_clist\_seek()}{cg\_clist\_seek()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structcList}{c\+List}} $\ast$ cg\+\_\+clist\+\_\+seek (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcList}{c\+List}} $\ast$}]{list,  }\item[{unsigned int}]{offset,  }\item[{char}]{dir }\end{DoxyParamCaption})}
+
+
+
+Seeks of (offset) nodes in (list). The direction depends of the (dir) parameter \+: 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em list} & A list. \\
+\hline
+\mbox{\texttt{ in}}  & {\em offset} & A unsigned int. \\
+\hline
+\mbox{\texttt{ in}}  & {\em dir} & A char
+\begin{DoxyItemize}
+\item Forward if (dir) $>$ 0
+\item Backward if (dir) $<$ 0
+\item Doesn\textquotesingle{}t seek if (dir) = 0. If (offset) is higher than possible offset, will return the first or the last node, corresponding to (dir). 
+\end{DoxyItemize}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list node 
+\end{DoxyReturn}
+\mbox{\Hypertarget{cList_8h_a3d5d146c9fd4e4091104eaa56ce655a2}\label{cList_8h_a3d5d146c9fd4e4091104eaa56ce655a2}} 
+\index{cList.h@{cList.h}!cg\_clist\_set\_content@{cg\_clist\_set\_content}}
+\index{cg\_clist\_set\_content@{cg\_clist\_set\_content}!cList.h@{cList.h}}
+\subsubsection{\texorpdfstring{cg\_clist\_set\_content()}{cg\_clist\_set\_content()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structcList}{c\+List}} $\ast$ cg\+\_\+clist\+\_\+set\+\_\+content (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcList}{c\+List}} $\ast$}]{list,  }\item[{int}]{pos,  }\item[{c\+Pointer}]{data }\end{DoxyParamCaption})}
+
+
+
+Modify the content of the node located at (pos). Return a pointer on it. If (pos) is higher/lower than the possible offset, will act the same as cg\+\_\+clist\+\_\+append\+\_\+data/cg\+\_\+clist\+\_\+prepend\+\_\+data. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em list} & A list \\
+\hline
+\mbox{\texttt{ in}}  & {\em pos} & An integer \\
+\hline
+\mbox{\texttt{ in}}  & {\em data} & A default pointer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list node 
+\end{DoxyReturn}
+\mbox{\Hypertarget{cList_8h_a6e37fbc61806a5b6bd45dc71eec4af2b}\label{cList_8h_a6e37fbc61806a5b6bd45dc71eec4af2b}} 
+\index{cList.h@{cList.h}!cg\_clist\_set\_pos@{cg\_clist\_set\_pos}}
+\index{cg\_clist\_set\_pos@{cg\_clist\_set\_pos}!cList.h@{cList.h}}
+\subsubsection{\texorpdfstring{cg\_clist\_set\_pos()}{cg\_clist\_set\_pos()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structcList}{c\+List}} $\ast$ cg\+\_\+clist\+\_\+set\+\_\+pos (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcList}{c\+List}} $\ast$}]{list,  }\item[{int}]{pos }\end{DoxyParamCaption})}
+
+
+
+Returns a pointer on the list node located at (pos) int the list. If (pos) is higher/lower than possible positions, will return the last/first node of the list. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em list} & A list. \\
+\hline
+\mbox{\texttt{ in}}  & {\em pos} & An integer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list node. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{cList_8h_a69205c7063d4d47170e37daf1801db0f}\label{cList_8h_a69205c7063d4d47170e37daf1801db0f}} 
+\index{cList.h@{cList.h}!cg\_clist\_sort\_asc@{cg\_clist\_sort\_asc}}
+\index{cg\_clist\_sort\_asc@{cg\_clist\_sort\_asc}!cList.h@{cList.h}}
+\subsubsection{\texorpdfstring{cg\_clist\_sort\_asc()}{cg\_clist\_sort\_asc()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structcList}{c\+List}} $\ast$ cg\+\_\+clist\+\_\+sort\+\_\+asc (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcList}{c\+List}} $\ast$}]{list,  }\item[{int($\ast$)(c\+Pointer, c\+Pointer)}]{compare\+Function }\end{DoxyParamCaption})}
+
+
+
+Takes a list as entry. Sort the list depending its content. The parameter to use must be given by ($\ast$compare\+Function), which must return an integer \+: 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em list} & A list. \\
+\hline
+\mbox{\texttt{ in}}  & {\em ($\ast$compare\+Function)} & A comparison function (More details following).
+\begin{DoxyItemize}
+\item $>$ 0 if the node with the lowest value must be placed before the second.
+\item $<$ 0 if the node with the lowest value must be placed after the second.
+\item = 0 if nodes should keep the same order. Returns the beginning of the sorted list. Returns N\+U\+LL if (list) is empty. 
+\end{DoxyItemize}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list node. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{cList_8h_acaa3259b8fc5461730ad38045255e07a}\label{cList_8h_acaa3259b8fc5461730ad38045255e07a}} 
+\index{cList.h@{cList.h}!cg\_clist\_sort\_desc@{cg\_clist\_sort\_desc}}
+\index{cg\_clist\_sort\_desc@{cg\_clist\_sort\_desc}!cList.h@{cList.h}}
+\subsubsection{\texorpdfstring{cg\_clist\_sort\_desc()}{cg\_clist\_sort\_desc()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structcList}{c\+List}} $\ast$ cg\+\_\+clist\+\_\+sort\+\_\+desc (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcList}{c\+List}} $\ast$}]{list,  }\item[{int($\ast$)(c\+Pointer, c\+Pointer)}]{compare\+Function }\end{DoxyParamCaption})}
+
+
+
+Takes a list as entry. Sort the list depending its content. The parameter to use must be given by ($\ast$compare\+Function), which must return an integer \+: 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em list} & A list. \\
+\hline
+\mbox{\texttt{ in}}  & {\em ($\ast$compare\+Function)} & A comparison function (More details following).
+\begin{DoxyItemize}
+\item $>$ 0 if the node with the lowest value must be placed after the second.
+\item $<$ 0 if the node with the lowest value must be placed before the second.
+\item = 0 if nodes should keep the same order. Returns the beginning of the sorted list. Returns N\+U\+LL if (list) is empty. 
+\end{DoxyItemize}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list node. 
+\end{DoxyReturn}
