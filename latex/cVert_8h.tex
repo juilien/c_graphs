@@ -1,0 +1,174 @@
+\hypertarget{cVert_8h}{}\section{c\+Vert.\+h File Reference}
+\label{cVert_8h}\index{cVert.h@{cVert.h}}
+
+
+Contains basic functions to manage graph vertices.  
+
+
+{\ttfamily \#include \char`\"{}c\+Edge.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}c\+List.\+h\char`\"{}}\newline
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structcVert__s}{c\+Vert\+\_\+s}}
+\item 
+struct \mbox{\hyperlink{structcEdge__s}{c\+Edge\+\_\+s}}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{cVert_8h_a89bd8ef91aa298a93da2f6d438539cb7}\label{cVert_8h_a89bd8ef91aa298a93da2f6d438539cb7}} 
+typedef struct \mbox{\hyperlink{structcVert__s}{c\+Vert\+\_\+s}} {\bfseries c\+Vert}
+\item 
+\mbox{\Hypertarget{cVert_8h_adb8a63e9ab1a468aa60192a859e2c968}\label{cVert_8h_adb8a63e9ab1a468aa60192a859e2c968}} 
+typedef struct \mbox{\hyperlink{structcEdge__s}{c\+Edge\+\_\+s}} {\bfseries c\+Edge}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structcVert__s}{c\+Vert}} $\ast$ \mbox{\hyperlink{cVert_8h_a9199f8b506a6990933b638daea24f226}{cg\+\_\+cvert\+\_\+new\+\_\+empty}} (void)
+\begin{DoxyCompactList}\small\item\em Create an empty graph vertice. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structcVert__s}{c\+Vert}} $\ast$ \mbox{\hyperlink{cVert_8h_ade41591e55de1039b9e98e8936079a78}{cg\+\_\+cvert\+\_\+new}} (c\+Pointer data)
+\begin{DoxyCompactList}\small\item\em Create a graph vertice containing (data). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structcVert__s}{c\+Vert}} $\ast$ \mbox{\hyperlink{cVert_8h_a28eee0eea153ed52d25dd46574cbfbf0}{cg\+\_\+cvert\+\_\+set\+\_\+data}} (\mbox{\hyperlink{structcVert__s}{c\+Vert}} $\ast$vert, c\+Pointer data)
+\begin{DoxyCompactList}\small\item\em Modify the content of (vert) with (data). If (vert) is N\+U\+LL, returns a new graph vertice filled with (data). \end{DoxyCompactList}\item 
+c\+Pointer \mbox{\hyperlink{cVert_8h_a15d7c70f9c3870deff258bcfbe14b360}{cg\+\_\+cvert\+\_\+get\+\_\+data}} (\mbox{\hyperlink{structcVert__s}{c\+Vert}} $\ast$vert)
+\begin{DoxyCompactList}\small\item\em Get the content of a graph vertice. Returns N\+U\+LL if the vertice doesn\textquotesingle{}t exist, or if it\textquotesingle{}s empty. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structcVert__s}{c\+Vert}} $\ast$ \mbox{\hyperlink{cVert_8h_a6a0779db1b0a6d3ef51d9e5987e60c98}{cg\+\_\+cvert\+\_\+add\+\_\+edge}} (\mbox{\hyperlink{structcVert__s}{c\+Vert}} $\ast$vert, \mbox{\hyperlink{structcEdge__s}{c\+Edge}} $\ast$edge)
+\begin{DoxyCompactList}\small\item\em Add (edge) at the end of the list of edges of (vert). Returns (vert). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structcVert__s}{c\+Vert}} $\ast$ \mbox{\hyperlink{cVert_8h_a329a9f34e18d6c871614261ea2f01260}{cg\+\_\+cvert\+\_\+remove\+\_\+edge}} (\mbox{\hyperlink{structcVert__s}{c\+Vert}} $\ast$vert, \mbox{\hyperlink{structcEdge__s}{c\+Edge}} $\ast$edge)
+\begin{DoxyCompactList}\small\item\em Remove (edge) from the list of edges of (vert). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{cVert_8h_a1297ca6e5872d4f103a823ee56da80dd}{cg\+\_\+cvert\+\_\+destroy}} (\mbox{\hyperlink{structcVert__s}{c\+Vert}} $\ast$vert)
+\begin{DoxyCompactList}\small\item\em Destroy a graph vertice and the list of its edges (not edges themselves). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Contains basic functions to manage graph vertices. 
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{cVert_8h_a6a0779db1b0a6d3ef51d9e5987e60c98}\label{cVert_8h_a6a0779db1b0a6d3ef51d9e5987e60c98}} 
+\index{cVert.h@{cVert.h}!cg\_cvert\_add\_edge@{cg\_cvert\_add\_edge}}
+\index{cg\_cvert\_add\_edge@{cg\_cvert\_add\_edge}!cVert.h@{cVert.h}}
+\subsubsection{\texorpdfstring{cg\_cvert\_add\_edge()}{cg\_cvert\_add\_edge()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structcVert__s}{c\+Vert}} $\ast$ cg\+\_\+cvert\+\_\+add\+\_\+edge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcVert__s}{c\+Vert}} $\ast$}]{vert,  }\item[{\mbox{\hyperlink{structcEdge__s}{c\+Edge}} $\ast$}]{edge }\end{DoxyParamCaption})}
+
+
+
+Add (edge) at the end of the list of edges of (vert). Returns (vert). 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em vert} & A graph vertice \\
+\hline
+\mbox{\texttt{ in}}  & {\em edge} & A graph edge \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A graph vertice. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{cVert_8h_a1297ca6e5872d4f103a823ee56da80dd}\label{cVert_8h_a1297ca6e5872d4f103a823ee56da80dd}} 
+\index{cVert.h@{cVert.h}!cg\_cvert\_destroy@{cg\_cvert\_destroy}}
+\index{cg\_cvert\_destroy@{cg\_cvert\_destroy}!cVert.h@{cVert.h}}
+\subsubsection{\texorpdfstring{cg\_cvert\_destroy()}{cg\_cvert\_destroy()}}
+{\footnotesize\ttfamily void cg\+\_\+cvert\+\_\+destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcVert__s}{c\+Vert}} $\ast$}]{vert }\end{DoxyParamCaption})}
+
+
+
+Destroy a graph vertice and the list of its edges (not edges themselves). 
+
+\textbackslash{}func void cg\+\_\+cvert\+\_\+destroy(c\+Vert vert) 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em A} & graph vertice. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{cVert_8h_a15d7c70f9c3870deff258bcfbe14b360}\label{cVert_8h_a15d7c70f9c3870deff258bcfbe14b360}} 
+\index{cVert.h@{cVert.h}!cg\_cvert\_get\_data@{cg\_cvert\_get\_data}}
+\index{cg\_cvert\_get\_data@{cg\_cvert\_get\_data}!cVert.h@{cVert.h}}
+\subsubsection{\texorpdfstring{cg\_cvert\_get\_data()}{cg\_cvert\_get\_data()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structcVert__s}{c\+Vert}} $\ast$ cg\+\_\+cvert\+\_\+get\+\_\+data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcVert__s}{c\+Vert}} $\ast$}]{vert }\end{DoxyParamCaption})}
+
+
+
+Get the content of a graph vertice. Returns N\+U\+LL if the vertice doesn\textquotesingle{}t exist, or if it\textquotesingle{}s empty. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em vert} & A graph vertice. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A default pointer. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{cVert_8h_ade41591e55de1039b9e98e8936079a78}\label{cVert_8h_ade41591e55de1039b9e98e8936079a78}} 
+\index{cVert.h@{cVert.h}!cg\_cvert\_new@{cg\_cvert\_new}}
+\index{cg\_cvert\_new@{cg\_cvert\_new}!cVert.h@{cVert.h}}
+\subsubsection{\texorpdfstring{cg\_cvert\_new()}{cg\_cvert\_new()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structcVert__s}{c\+Vert}} $\ast$ cg\+\_\+cvert\+\_\+new (\begin{DoxyParamCaption}\item[{c\+Pointer}]{data }\end{DoxyParamCaption})}
+
+
+
+Create a graph vertice containing (data). 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em data} & A default pointer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A graph vertice. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{cVert_8h_a9199f8b506a6990933b638daea24f226}\label{cVert_8h_a9199f8b506a6990933b638daea24f226}} 
+\index{cVert.h@{cVert.h}!cg\_cvert\_new\_empty@{cg\_cvert\_new\_empty}}
+\index{cg\_cvert\_new\_empty@{cg\_cvert\_new\_empty}!cVert.h@{cVert.h}}
+\subsubsection{\texorpdfstring{cg\_cvert\_new\_empty()}{cg\_cvert\_new\_empty()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structcVert__s}{c\+Vert}} $\ast$ cg\+\_\+cvert\+\_\+new\+\_\+empty (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Create an empty graph vertice. 
+
+\begin{DoxyReturn}{Returns}
+An empty graph vertice. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{cVert_8h_a329a9f34e18d6c871614261ea2f01260}\label{cVert_8h_a329a9f34e18d6c871614261ea2f01260}} 
+\index{cVert.h@{cVert.h}!cg\_cvert\_remove\_edge@{cg\_cvert\_remove\_edge}}
+\index{cg\_cvert\_remove\_edge@{cg\_cvert\_remove\_edge}!cVert.h@{cVert.h}}
+\subsubsection{\texorpdfstring{cg\_cvert\_remove\_edge()}{cg\_cvert\_remove\_edge()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structcVert__s}{c\+Vert}} $\ast$ cg\+\_\+cvert\+\_\+remove\+\_\+edge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcVert__s}{c\+Vert}} $\ast$}]{vert,  }\item[{\mbox{\hyperlink{structcEdge__s}{c\+Edge}} $\ast$}]{edge }\end{DoxyParamCaption})}
+
+
+
+Remove (edge) from the list of edges of (vert). 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em vert} & A graph vertice. \\
+\hline
+\mbox{\texttt{ in}}  & {\em edge} & A graph edge. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A graph vertice. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{cVert_8h_a28eee0eea153ed52d25dd46574cbfbf0}\label{cVert_8h_a28eee0eea153ed52d25dd46574cbfbf0}} 
+\index{cVert.h@{cVert.h}!cg\_cvert\_set\_data@{cg\_cvert\_set\_data}}
+\index{cg\_cvert\_set\_data@{cg\_cvert\_set\_data}!cVert.h@{cVert.h}}
+\subsubsection{\texorpdfstring{cg\_cvert\_set\_data()}{cg\_cvert\_set\_data()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structcVert__s}{c\+Vert}} $\ast$ cg\+\_\+cvert\+\_\+set\+\_\+data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcVert__s}{c\+Vert}} $\ast$}]{vert,  }\item[{c\+Pointer}]{data }\end{DoxyParamCaption})}
+
+
+
+Modify the content of (vert) with (data). If (vert) is N\+U\+LL, returns a new graph vertice filled with (data). 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em vert} & A graph vertice \\
+\hline
+\mbox{\texttt{ in}}  & {\em data} & A default pointer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A graph vertice. 
+\end{DoxyReturn}
