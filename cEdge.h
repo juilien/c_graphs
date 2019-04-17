@@ -9,18 +9,38 @@
 #include "cVert.h"
 #include "cList.h"
 
-int       cg_edge_compare(cPointer a, cPointer b) {
+
+/**
+*\fn int cg_edge_compare(cPointer a, cPointer b)
+*\param[in] a A graph edge.
+*\param[in] b A graph edge.
+*\brief Takes two edges. Returns 0 if they are the same, 1 otherwise.
+*\return A integer.
+**/
+int       cg_cedge_compare(cPointer a, cPointer b) {
   cEdge* c = CEDGE(a);
   cEdge* d = CEDGE(b);
-  return (c->vertA == d->vertA && c->vertB == d->vertB && c->value == d->value && c->orientation == d->orientation);
+  return !(c->vertA == d->vertA && c->vertB == d->vertB && c->value == d->value && c->orientation == d->orientation);
 }
 
-
+/**
+*\fn cEdge* cg_cedge_new_empty(void)
+*\brief Creates a grapĥ edge with all fields blank, and returns it.
+*\return A graph edge.
+**/
 cEdge*    cg_cedge_new_empty(void) {
   cEdge* newEdge = (cEdge*) calloc(1, sizeof(cEdge));
   return newEdge;
 }
-
+/**
+*\fn cEdge* cg_cedge_new(cVert* vertA, cVert* vertB, cPointer data, int orientation)
+*\param[in] vertA A graph vertice.
+*\param[in] vertB A graph vertice.
+*\param[in] data A default pointer.
+*\param[in] orientation An integer.
+*\brief Creates a new edge between vertices A and B (The edge isn't added to vertices' edges list), filled with (data) and returns it.
+*\return A graph edge.
+**/
 cEdge*    cg_cedge_new(cVert* vertA, cVert* vertB, cPointer data, int orientation) {
   cEdge* newEdge = cg_cedge_new_empty();
   newEdge->vertA = vertA;

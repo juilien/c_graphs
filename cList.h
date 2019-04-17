@@ -16,6 +16,7 @@ typedef void* cPointer;
 #define DOUBLE(u) ((double*) (cPointer) u)
 #define FLOAT(u) ((float*) (cPointer) u)
 #define CEDGE(u) ((cEdge*) (cPointer) u)
+#define CVERT(u) ((cVert*) (cPointer) u)
 
 #define INT_MAX         2147483647
 #define SEEK_FORWARD    1
@@ -26,13 +27,34 @@ typedef void* cPointer;
 
 /**
 *\struct cList cList.h
-*\brief A basic double-chained list node definition, which contains a default pointer
+*\brief A basic double-chained list node definition, with a default pointer for datas.
 **/
 typedef struct cList_s {
   struct cList_s *    previous;
   struct cList_s *    next;
   cPointer            content;
 } cList;
+/**
+*\struct cVert_s cVert.h
+*\brief A basic vertice structure. Contains a field ofr datas, and a list of related edges.
+**/
+typedef struct cVert_s {
+  cPointer  data;
+  cList*    edges;
+} cVert;
+/**
+*\struct cEdge cVert.h
+*\brief A basic edge definition, with two fields for linked vertices, a default pointer for datas, and an interger for orientation :
+*  1 : A-->B
+*  0 : A<->B
+* -1 : A<--B
+**/
+typedef struct cEdge_s {
+  cVert*    vertA;
+  cVert*    vertB;
+  cPointer  value;
+  int       orientation;
+} cEdge;
 
 /**
 *\fn cList* cg_clist_new_empty(void)
@@ -41,7 +63,7 @@ typedef struct cList_s {
 **/
 cList*    cg_clist_new_empty(void) {
   cList* newList = NULL;
-  newList = (cList*) calloc(1, sizeof(newList));
+  newList = (cList*) calloc(1, sizeof(cList));
   return newList;
 }
 /**
@@ -118,7 +140,6 @@ int       cg_clist_get_size(cList* list) {
   }
   return i;
 }
-
 
 /**
 *\fn cList* cg_clist_prepend_data(cList* list, cPointer data)
@@ -443,7 +464,7 @@ cList*    cg_clist_find_all(cList* list, int (*searchFunction)(cPointer, cPointe
 /**
 *\fn void cg_clist_destroy(cList* list)
 *\param[in] list A list node.
-*\brief Will destroy the whole list, not depending of the position on (list) in the list.
+*\brief Will destroy the list from current position in the list to the end.
 *WARNING : cg_clist_destoy doesn't destroy the content of the list.
 **/
 void      cg_clist_destroy(cList* list) {
@@ -451,6 +472,18 @@ void      cg_clist_destroy(cList* list) {
     if (list->previous) list->previous->next = NULL;
     cg_clist_destroy(list->next);
     free(list);
+  }
+}
+/**
+*\fn void cg_clist_destroy_full(cList* list)
+*\param[in] list A list node.
+*\brief Will destroy the whole list, not depending of the position on (list) in the list.
+*WARNING : cg_clist_destoy doesn't destroy the content of the list.
+**/
+void      cg_clist_destroy_full(cList* list) {
+  if (list) {
+    list = cg_clist_set_pos(list, 0);
+    cg_clist_destroy(list);
   }
 }
 /**

@@ -3,23 +3,17 @@
 /**
 *\file  cVert.h
 *\brief Contains basic functions to manage graph vertices.
-*
 **/
 
 #include "cEdge.h"
 #include "cList.h"
 
-typedef struct cVert_s {
-  cPointer  data;
-  cList*    edges;
-} cVert;
+int       cg_cvert_compare(cPointer a, cPointer b) {
+  cVert* c = CVERT(a);
+  cVert* d = CVERT(b);
+  return !(c == d);
+}
 
-typedef struct cEdge_s {
-  cVert*    vertA;
-  cVert*    vertB;
-  cPointer  value;
-  int       orientation;
-} cEdge;
 
 /**
 *\fn cVert* cg_cvert_new_empty(void)
@@ -100,7 +94,7 @@ cVert*    cg_cvert_remove_edge(cVert* vert, cEdge* edge) {
 **/
 void      cg_cvert_destroy(cVert* vert) {
   if (vert) {
-    cg_clist_destroy(vert->edges);
+    cg_clist_destroy_full(vert->edges);
     free(vert);
   }
 }
