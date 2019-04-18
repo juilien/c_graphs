@@ -1,14 +1,8 @@
 #ifndef CEDGE_INCLUDED
 #define CEDGE_INCLUDED
 
-#define ASC_ORIENTATION 1
-#define DES_ORIENTATION -1
-#define EQU_ORIENTATION 0
-#define ERR_ORIENTATION 2
-
-#include "cVert.h"
+#include "cLibs.h"
 #include "cList.h"
-
 
 /**
 *\fn int cg_edge_compare(cPointer a, cPointer b)
@@ -20,7 +14,7 @@
 int       cg_cedge_compare(cPointer a, cPointer b) {
   cEdge* c = CEDGE(a);
   cEdge* d = CEDGE(b);
-  return !(c->vertA == d->vertA && c->vertB == d->vertB && c->value == d->value && c->orientation == d->orientation);
+  return !(c == d);
 }
 
 /**

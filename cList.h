@@ -1,60 +1,16 @@
 #ifndef CLIST_INCLUDED
 #define CLIST_INCLUDED
+
 /**
 *\file  cList.h
 *\brief Contains basic functions to manage double-chained lists.
 *
 **/
 
-#include <stdlib.h>
-#include <stdbool.h>
-#include <math.h>
+#include "cLibs.h"
 
-typedef void* cPointer;
 
-#define INT(u) ((int*) (cPointer) u)
-#define DOUBLE(u) ((double*) (cPointer) u)
-#define FLOAT(u) ((float*) (cPointer) u)
-#define CEDGE(u) ((cEdge*) (cPointer) u)
-#define CVERT(u) ((cVert*) (cPointer) u)
 
-#define INT_MAX         2147483647
-#define SEEK_FORWARD    1
-#define SEEK_BACKWARD   -1
-#define OFFSET_MAX      1
-#define OFFSET_CURRENT  0
-#define OFFSET_MIN      -1
-
-/**
-*\struct cList cList.h
-*\brief A basic double-chained list node definition, with a default pointer for datas.
-**/
-typedef struct cList_s {
-  struct cList_s *    previous;
-  struct cList_s *    next;
-  cPointer            content;
-} cList;
-/**
-*\struct cVert_s cVert.h
-*\brief A basic vertice structure. Contains a field ofr datas, and a list of related edges.
-**/
-typedef struct cVert_s {
-  cPointer  data;
-  cList*    edges;
-} cVert;
-/**
-*\struct cEdge cVert.h
-*\brief A basic edge definition, with two fields for linked vertices, a default pointer for datas, and an interger for orientation :
-*  1 : A-->B
-*  0 : A<->B
-* -1 : A<--B
-**/
-typedef struct cEdge_s {
-  cVert*    vertA;
-  cVert*    vertB;
-  cPointer  value;
-  int       orientation;
-} cEdge;
 
 /**
 *\fn cList* cg_clist_new_empty(void)
@@ -299,7 +255,6 @@ cList*    cg_clist_insert_clist(cList* list, int pos, cList* listToInsert) {
 
   return list;
 }
-
 
 /**
 *\fn cList* cg_clist_copy(cList* list)

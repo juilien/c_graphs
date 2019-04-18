@@ -5,8 +5,7 @@
 *\brief Contains basic functions to manage graph vertices.
 **/
 
-#include "cEdge.h"
-#include "cList.h"
+#include "cLibs.h"
 
 int       cg_cvert_compare(cPointer a, cPointer b) {
   cVert* c = CVERT(a);
