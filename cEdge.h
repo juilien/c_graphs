@@ -44,48 +44,63 @@ cEdge*    cg_cedge_new(cVert* vertA, cVert* vertB, cPointer data, int orientatio
   return newEdge;
 }
 
-
-cEdge*    cg_cedge_set_vertA(cEdge* edge, cVert* vert) {
-  if (!edge) return NULL;
+/**
+*\fn void cg_cedge_set_vertA(cEdge* edge, cVert* vert)
+*\param[in] edge A graph edge.
+*\param[in] vert A graph vertice.
+*\brief If edge exists, set its vertA field to (vert).
+**/
+void      cg_cedge_set_vertA(cEdge* edge, cVert* vert) {
+  if (!edge) return;
   edge->vertA = vert;
-  return edge;
 }
 
 cVert*    cg_cedge_get_vertA(cEdge* edge) {
   if (!edge) return NULL;
   return edge->vertA;
 }
-
-cEdge*    cg_cedge_set_vertB(cEdge* edge, cVert* vert) {
-  if (!edge) return NULL;
+/**
+*\fn void cg_cedge_set_vertB(cEdge* edge, cVert* vert)
+*\param[in] edge A graph edge.
+*\param[in] vert A graph vertice.
+*\brief If edge exists, set its vertB field to (vert).
+**/
+void      cg_cedge_set_vertB(cEdge* edge, cVert* vert) {
+  if (!edge) return;
   edge->vertB = vert;
-  return edge;
 }
 
 cVert*    cg_cedge_get_vertB(cEdge* edge) {
   if (!edge) return NULL;
   return edge->vertB;
 }
-
-cEdge*    cg_cedge_set_value(cEdge* edge, cPointer data) {
-  if (!edge) return NULL;
+/**
+*\fn void cg_cedge_set_value(cEdge* edge, cPointer data)
+*\param[in] edge A graph edge.
+*\param[in] vert A graph vertice.
+*\brief If edge exists, set its value field to (value).
+**/
+void      cg_cedge_set_value(cEdge* edge, cPointer data) {
+  if (!edge) return;
   edge->value = data;
-  return edge;
 }
 
 cPointer  cg_cedge_get_value(cEdge* edge) {
   if (!edge) return NULL;
   return edge->value;
 }
-
-cEdge*    cg_cedge_set_orientation(cEdge* edge, int orientation) {
-  if (!edge) return NULL;
+/**
+*\fn void cg_cedge_set_orientation(cEdge* edge, int orientation)
+*\param[in] edge A graph edge.
+*\param[in] vert A graph vertice.
+*\brief If edge exists, set its orientation field to (orientation).
+**/
+void      cg_cedge_set_orientation(cEdge* edge, int orientation) {
+  if (!edge) return;
 
   if (orientation > 0) edge->orientation = ASC_ORIENTATION;
   else if(orientation < 0) edge->orientation = DES_ORIENTATION;
   else edge->orientation = EQU_ORIENTATION;
-
-  return edge;
 }
 
 int       cg_cedge_get_orientation(cEdge* edge) {

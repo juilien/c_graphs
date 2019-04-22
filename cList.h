@@ -9,9 +9,6 @@
 
 #include "cLibs.h"
 
-
-
-
 /**
 *\fn cList* cg_clist_new_empty(void)
 *\brief Create an empty list node.
@@ -255,6 +252,22 @@ cList*    cg_clist_insert_clist(cList* list, int pos, cList* listToInsert) {
 
   return list;
 }
+/**
+*\fn void cg_clist_swap_content(cList* list1, cList* list2)
+*\param[in] list1 A list node
+*\param[in] list2 A list node
+*\brief Swap the pointers of list1 and list2. If one or both are NULL, nothing happens.
+**/
+void      cg_clist_swap_content(cList* list1, cList* list2) {
+  if (!list1 && !list2) return;
+  if (!list1) return;
+  if (!list2) return;
+  cList* tmp = list2;
+  list2 = list1;
+  list1 = tmp;
+  return;
+}
+
 
 /**
 *\fn cList* cg_clist_copy(cList* list)

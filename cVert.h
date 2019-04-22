@@ -37,16 +37,14 @@ cVert*    cg_cvert_new(cPointer data) {
 }
 
 /**
-*\fn cVert* cg_cvert_set_data(cVert* vert, cPointer data)
+*\fn void cg_cvert_set_data(cVert* vert, cPointer data)
 *\param[in] vert A graph vertice
 *\param[in] data A default pointer
-*\brief Modify the content of (vert) with (data). If (vert) is NULL, returns a new graph vertice filled with (data).
-*\return A graph vertice.
+*\brief Modify the content of (vert) with (data).
 **/
-cVert*    cg_cvert_set_data(cVert* vert, cPointer data) {
-  if (vert) vert->data = data;
-  else vert = cg_cvert_new(data);
-  return vert;
+void      cg_cvert_set_data(cVert* vert, cPointer data) {
+  if (!vert) return;
+  vert->data = data;
 }
 /**
 *\fn cVert* cg_cvert_get_data(cVert* vert)
@@ -59,17 +57,16 @@ cPointer  cg_cvert_get_data(cVert* vert) {
   return vert->data;
 }
 /**
-*\fn cVert* cg_cvert_add_edge(cVert* vert, cEdge* edge)
+*\fn void cg_cvert_add_edge(cVert* vert, cEdge* edge)
 *\param[in] vert A graph vertice
 *\param[in] edge A graph edge
-*\brief Add (edge) at the end of the list of edges of (vert). Returns (vert).
-*\return A graph vertice.
+*\brief Add (edge) at the end of the list of edges of (vert). If (vert) was already linked by (edge), nothing happens.
 **/
-cVert*    cg_cvert_add_edge(cVert* vert, cEdge* edge) {
-  if (!vert) return NULL;
-  if (!edge) return vert;
-  vert->edges = cg_clist_append_data(vert->edges, edge);
-  return vert;
+void      cg_cvert_add_edge(cVert* vert, cEdge* edge) {
+  if (!vert || !edge) return;
+  if (!cg_clist_find_first(vert->edges, (*cg_cvert_compare), edge))
+    vert->edges = cg_clist_append_data(vert->edges, edge);
+  return;
 }
 /**
 *\fn cVert* cg_cvert_remove_edge(cVert* vert, cEdge* edge)
